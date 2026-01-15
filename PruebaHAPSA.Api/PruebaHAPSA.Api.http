@@ -1,0 +1,6 @@
+@PruebaHAPSA.Api_HostAddress = http://localhost:5267
+
+GET {{PruebaHAPSA.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
