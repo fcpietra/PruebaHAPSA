@@ -1,4 +1,4 @@
-# 🐎 PruebaHAPSA - Sistema de Gestión de Reservas
+# 🏇🏼 PruebaHAPSA - Sistema de Gestión de Reservas
 
 ![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=flat&logo=dotnet)
 ![Angular](https://img.shields.io/badge/Angular-19.0-DD0031?style=flat&logo=angular)
