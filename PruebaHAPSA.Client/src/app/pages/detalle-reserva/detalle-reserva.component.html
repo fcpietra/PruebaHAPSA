@@ -1,0 +1,44 @@
+<div style="padding: 20px; max-width: 600px; font-family: Arial;">
+  
+  <a routerLink="/" style="display: inline-block; margin-bottom: 20px;">&larr; Volver al Listado</a>
+
+  @if (cargando) {
+    <p>Cargando datos...</p>
+  } @else if (reserva) {
+    
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+      <h2 [style.color]="reserva.estado === 'Confirmada' ? 'green' : 'orange'">
+        Reserva #{{ reserva.id }} ({{ reserva.estado }})
+      </h2>
+
+      <hr>
+
+      <h3>Datos Generales</h3>
+      <p><strong>Cliente:</strong> {{ reserva.nombre }}</p>
+      <p><strong>Email:</strong> {{ reserva.email }}</p>
+      <p><strong>Fecha:</strong> {{ reserva.fechaHora | date:'dd/MM/yyyy HH:mm' }}</p>
+      <p><strong>Personas:</strong> {{ reserva.cantidadPersonas }}</p>
+      <p><strong>Tipo:</strong> {{ reserva.tipo }}</p>
+
+      @if (reserva.tipo === 'VIP') {
+        <div style="background-color: #ffd70033; padding: 10px; margin-top: 10px;">
+          <h3>👑 Detalles VIP</h3>
+          <p><strong>Código VIP:</strong> {{ reserva.codigoVip }}</p>
+          <p><strong>Mesa Preferida:</strong> {{ reserva.mesaPreferida || 'Sin preferencia' }}</p>
+        </div>
+      }
+
+      @if (reserva.tipo === 'Cumpleaños') {
+        <div style="background-color: #ff69b433; padding: 10px; margin-top: 10px;">
+          <h3>🎂 Detalles Cumpleaños</h3>
+          <p><strong>Edad a festejar:</strong> {{ reserva.edadCumpleanero }} años</p>
+          <p><strong>Requiere Torta:</strong> {{ reserva.requiereTorta ? 'SÍ' : 'NO' }}</p>
+        </div>
+      }
+
+    </div>
+
+  } @else {
+    <p style="color: red;">No se encontró la reserva.</p>
+  }
+</div>

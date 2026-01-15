@@ -1,0 +1,46 @@
+<div style="padding: 20px; font-family: Arial, sans-serif;">
+  <h1>Reservas HAPSA</h1>
+  <p>Estado de conexión: {{ reservas.length }} reservas cargadas.</p>
+  
+  <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr style="background-color: #f2f2f2;">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of reservas; track item.id) {
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.fechaHora | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ item.tipo }}</td>
+          <td>
+            @if (item.estado === 'Confirmada') {
+              <span style="color: green; font-weight: bold;">{{ item.estado }}</span>
+            } @else if (item.estado === 'Cancelada') {
+              <span style="color: red;">{{ item.estado }}</span>
+            } @else {
+              <span style="color: orange;">{{ item.estado }}</span>
+            }
+          </td>
+          <td>
+              <a [routerLink]="['/detalle', item.id]" 
+                style="cursor: pointer; color: blue; text-decoration: underline;">
+                Ver Detalle
+              </a>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" style="text-align: center;">No hay reservas cargadas o falló la conexión.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
